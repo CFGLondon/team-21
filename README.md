@@ -5,5 +5,7 @@
 Make sure you have node.js and npm installed and added to your PATH
 
 Then run:
-```npm install```
-```node app.js```
+```shell
+npm install
+node app.js
+```
