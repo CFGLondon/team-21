@@ -10,7 +10,7 @@ angular.module('myApp.controllers', []).
   }).
   controller('MyCtrl1', function ($scope, socket) {
     socket.on('send:time', function (data) {
-      $scope.time = data.time;
+      $scope.time = new Date(data.time);
     });
   }).
   controller('MyCtrl2', function ($scope) {
