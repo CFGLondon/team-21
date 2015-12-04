@@ -3,9 +3,14 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('AppCtrl', function ($scope, socket) {
+  controller('AppCtrl', function ($http, $scope, socket) {
     socket.on('send:name', function (data) {
       $scope.name = data.name;
+
+      $scope.login = function (argument) {
+        $http.get('/auth/facebook');
+      }
+
     });
   }).
   controller('MyCtrl1', function ($scope, socket) {
