@@ -28,7 +28,7 @@ config(function ($routeProvider, $locationProvider) {
           controller: 'bangladeshCtrl'
       }).
     otherwise({
-      redirectTo: '/view1'
+      redirectTo: '/bangladesh'
     });
 
   $locationProvider.html5Mode(true);
