@@ -23,6 +23,10 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/partial2.html',
       controller: 'MyCtrl2'
     }).
+      when('/bangladesh', {
+          templateUrl: 'partials/bangladesh.html',
+          controller: 'bangladeshCtrl'
+      }).
     otherwise({
       redirectTo: '/view1'
     });
