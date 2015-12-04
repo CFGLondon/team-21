@@ -40,15 +40,19 @@ controller('bangladeshCtrl', function ($scope, $http) {
                             },
 
                             colorAxis: {
+                                minColor: '#FFFFFF',
+                                maxColor: '#FFA500'
                             },
-                            series : [{
+                            series : [
+
+                                {
                                 data :  $scope.bites,
                                 mapData: geojson,
                                 joinBy: 'name',
                                 name: 'No of visualy impaired people',
                                 states: {
                                     hover: {
-                                        color: '#BADA55'
+                                        color: '#EEE8AA'
                                     }
                                 },
                                 dataLabels: {
