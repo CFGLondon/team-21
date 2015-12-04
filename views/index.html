@@ -17,28 +17,73 @@
 	<body ng-controller="AppCtrl">
 
 	<!-- Header -->
+	<!-- Header -->
 		<header id="header">
-			<h1>Hello {{name}}</h1>
-			<div ng-view>
-			</div>
+
+			<h1>The Disability Crisis <img src="\images\logo.jpg" alt="Mountain View" style="width:75px;height:75px;"></h1>
+			<p>Fighting for independence, equality and opportunity<br />
+			 for disabled people living in poverty in Africa and Asia.</p>
 		</header>
 
-	<!-- Signup Form -->
-		<form id="signup-form" method="post" action="#">
-			<input type="email" name="email" id="email" placeholder="Email Address" />
-			<input type="submit" value="Sign Up" />
+	<!-- Problem Form -->
+	<div style="text-align:center;">
+		<form id="problem-form" method="post" action="#">
+			<table style="width: 100%; height: 100%;">
+				<tr>
+					<td>
+						<input type="text" name="First name" id="firstname" placeholder="First name" /><br/>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="Last name" id="lastname" placeholder="Last name" /><br/>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="Country" id="country" placeholder="Country" /><br/>
+					</td>
+					<td rowspan="3" align="left">
+						<h1>Or Text<span  style="color: #ff9900;">|</span>Call Us <br />+441597800020</h1>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="Location" id="location" placeholder="Location" /><br/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="email" name="First name" id="email" placeholder="Email Address" /><br/>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 50%;">
+						<textarea rows="4" cols="50" placeholder="Problem"></textarea> 					
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<br/><br/><br/><input type="submit" value="Let us know" /><br/>
+					</td>
+					<td></td>
+				</tr>
+			</table>
 		</form>
+	</div>
 
 	<!-- Footer -->
 		<footer id="footer">
 			<ul class="icons">
-				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-				<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+				<li><a href="http://twitter.com/adduk/" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="http://www.facebook.com/ADD.International" class="icon fa-facebook"><span class="label">Facenook</span></a></li>
+				<li><a href="mailto:supportercare@add.org.uk" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 			</ul>
 			<ul class="copyright">
-				<li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+				<li>&copy; Action on Disability and Development. Charity registration no. 294860</li><li></li>
 			</ul>
 		</footer>
 
