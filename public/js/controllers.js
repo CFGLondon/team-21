@@ -6,9 +6,12 @@ angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($http, $scope, socket) {
     socket.on('send:name', function (data) {
       $scope.name = data.name;
+      }
 
-      $scope.login = function (argument) {
-        $http.get('/auth/facebook');
+    });
+
+    socket.on('send:name', function (data) {
+      $scope.name = data.name;
       }
 
     });

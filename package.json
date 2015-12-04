@@ -12,5 +12,9 @@
     "passport-facebook": "^2.0.0",
     "socket.io": "~0.9.16",
     "twilio": "^2.6.0"
+  },
+  "scripts": {
+  	"prestart": "npm install",
+  	"start": "node app.js",
   }
 }
