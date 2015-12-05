@@ -22,6 +22,9 @@ angular.module('myApp.controllers', []).
   controller('MyCtrl2', function ($scope) {
     // write Ctrl here
   }).
+  controller('submit', function ($scope) {
+    // write Ctrl here
+  }).
 controller('bangladeshCtrl', function ($scope, $http) {
         $(function ($scope) {
 

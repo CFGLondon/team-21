@@ -19,6 +19,10 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/partial1.html',
       controller: 'MyCtrl1'
     }).
+    when('/submit', {
+      templateUrl: 'partials/submit.html',
+      controller: 'submit'
+    }).
     when('/version', {
       templateUrl: 'partials/partial2.html',
       controller: 'MyCtrl2'
