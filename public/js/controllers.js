@@ -26,7 +26,7 @@ angular.module('myApp.controllers', []).
   }).
 controller('bangladeshCtrl', function ($scope, $http) {
   var placeholderDiv = document.getElementById("tableauViz");
-  var url = "https://public.tableau.com/shared/53F327G7T?:display_count=yes";
+  var url = "https://public.tableau.com/views/cfgExample/ExampleDashboard?:embed=y&:display_count=yes&:showTabs=y";
   var options = {
     width: placeholderDiv.offsetWidth,
     height: placeholderDiv.offsetHeight,

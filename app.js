@@ -72,6 +72,8 @@ var translatorClient = new MsTranslator({
   , client_secret: "3Dopv4qM1C14WewQII8B6l/7NqeXr0gq8oMRyLSzVQE="
 }, true);
 
+
+
 /* Twillo thingy */
 
 var messages = [];
@@ -98,47 +100,47 @@ app.post('/message', function (request, response) {
 
 		// translate from detected language to enslish
 		translatorClient.translate(params, function(err, data) {
-		  translatedSmsBody = data;
+		  	translatedSmsBody = data;
+
+			var messagesRef = {
+				sid: request.param('MessageSid'),
+				type:'text',
+				direction: "inbound",
+				tstamp: date,
+				fromNumber:request.param('From'),
+				textMessage:translatedSmsBody,
+				fromCity:request.param('FromCity'),
+				fromState:request.param('FromState'),
+				fromCountry:request.param('FromCountry')
+			}
+
+			messages.push(messagesRef);
+
+			var outputFilename = 'messages.json';
+
+			var params = {
+			  text: 'Thanks for the message.'
+			  , from: 'en'
+			  , to: detectedLangauge
+			};
+
+			var translatedSmsReply = 'Thanks for the message.';
+
+			// translate from detected language to enslish
+			translatorClient.translate(params, function(err, data) {
+			  	translatedSmsReply = data;
+				var resp = new twilio.TwimlResponse();
+				resp.message(translatedSmsBody);
+				response.writeHead(200, {
+					'Content-Type':'text/xml'
+				});
+
+				response.end(resp.toString());
+			});
+
 		});
 
 	});
-
-	var messagesRef = {
-		sid: request.param('MessageSid'),
-		type:'text',
-		direction: "inbound",
-		tstamp: date,
-		fromNumber:request.param('From'),
-		textMessage:translatedSmsBody,
-		fromCity:request.param('FromCity'),
-		fromState:request.param('FromState'),
-		fromCountry:request.param('FromCountry')
-	}
-
-	messages.push(messagesRef);
-
-	var outputFilename = 'messages.json';
-
-	var params = {
-	  text: 'Thanks for the message.'
-	  , from: 'en'
-	  , to: detectedLangauge
-	};
-
-	var translatedSmsReply = 'Thanks for the message.';
-
-	// translate from detected language to enslish
-	translatorClient.translate(params, function(err, data) {
-	  translatedSmsBody = data;
-	});
-
-	var resp = new twilio.TwimlResponse();
-	resp.message(translatedSmsBody);
-	response.writeHead(200, {
-		'Content-Type':'text/xml'
-	});
-
-	response.end(resp.toString());
 });
 
 /**
