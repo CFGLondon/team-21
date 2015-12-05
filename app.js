@@ -136,7 +136,7 @@ app.post('/message', function (request, response) {
 		fromCountry:request.param('FromCountry')
 	}
 
-	io.sockets.emit('new_sms', messagesRef);
+	io.sockets.emit('send:new_sms', messagesRef);
 
 	var resp = new twilio.TwimlResponse();
 	resp.message('Thanks for the message.');
