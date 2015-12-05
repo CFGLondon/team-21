@@ -41,7 +41,7 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Country', 'Disability'],
-           ['Sudan', 7000000]
+           ['Sudan', 37000000]
         ]);
 
         var options = {};
@@ -107,7 +107,7 @@
           },
           hAxis: {
             title: 'Number of users',
-            minValue: 0,
+            minValue: 0
           },
           vAxis: {
             title: 'Country'
@@ -173,71 +173,71 @@ $(function () {
     var data = [
         {
             "hc-key": "sd-rs",
-            "value": 183432
+            "value": 1834
         },
         {
             "hc-key": "sd-711",
-            "value": 134233
+            "value": 1342
         },
         {
             "hc-key": "sd-7281",
-            "value": 22343
+            "value": 223
         },
         {
             "hc-key": "sd-wd",
-            "value": 323432
+            "value": 323
         },
         {
             "hc-key": "sd-kh",
-            "value": 43434
+            "value": 434
         },
         {
             "hc-key": "sd-gz",
-            "value": 484534
+            "value": 4845
         },
         {
             "hc-key": "sd-gd",
-            "value": 694353
+            "value": 6943
         },
         {
             "hc-key": "sd-rn",
-            "value": 338234
+            "value": 3382
         },
         {
             "hc-key": "sd-no",
-            "value": 424323
+            "value": 4243
         },
         {
             "hc-key": "sd-kn",
-            "value": 845345
+            "value": 8453
         },
         {
             "hc-key": "sd-wn",
-            "value": 4343543
+            "value": 4343
         },
         {
             "hc-key": "sd-si",
-            "value": 119343
+            "value": 1193
         },
         {
             "hc-key": "sd-nd",
-            "value": 1234455
+            "value": 12344
         },
         {
             "hc-key": "sd-ks",
-            "value": 134534
+            "value": 134
         },
         {
             "hc-key": "sd-sd",
-            "value": 1445345
+            "value": 14453
         },
         {
             "hc-key": "sd-ka",
-            "value": 154534
+            "value": 1545
         },
         {
             "hc-key": "sd-bn",
-            "value": 168454
+            "value": 1684
         }
     ];
 
@@ -265,6 +265,7 @@ $(function () {
             data : data,
             mapData: Highcharts.maps['countries/sd/sd-all'],
             joinBy: 'hc-key',
+            allowPointSelect: true,
             name: 'People with disabilities',
             states: {
                 hover: {
