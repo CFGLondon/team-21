@@ -4,17 +4,15 @@
 
 angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($http, $scope, socket) {
-    socket.on('send:name', function (data) {
-      $scope.name = data.name;
-      }
-
-    });
 
     socket.on('send:name', function (data) {
       $scope.name = data.name;
-      }
-
     });
+
+    socket.on('send:new_sms', function (data) {
+      console.log(data)
+    });
+
   }).
   controller('MyCtrl1', function ($scope, socket) {
     socket.on('send:time', function (data) {
