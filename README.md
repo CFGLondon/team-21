@@ -9,3 +9,6 @@ Then run:
 npm install
 node app.js
 ```
+
+App website:
+http://cfg2015.herokuapp.com/ 
