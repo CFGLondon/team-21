@@ -6,7 +6,17 @@ angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($http, $scope) {
 
   }).
-  controller('landing', function ($scope) {
+  controller('landing', function ($timeout,$scope) {
+
+    var x = 0;;
+
+    for (var i = 0; i < $('.info-container').length; i++) 
+    {
+      $timeout(function () {
+             $($('.info-container').get(x++)).css('opacity','1');
+      },1000 * (i+1));
+    };
+    
   }).
   controller('api', function ($scope) {
     // write Ctrl here

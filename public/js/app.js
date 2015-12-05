@@ -12,19 +12,23 @@ angular.module('myApp', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
-    when('/', {
-      templateUrl: 'partials/landing.html',
-      controller: 'landing'
-    }).
     when('/submit', {
       templateUrl: 'partials/submit.html',
       controller: 'submit'
+    }).
+    when('/landing', {
+      templateUrl: 'partials/landing.html',
+      controller: 'landing'
     }).
     when('/api', {
       templateUrl: 'partials/api.html',
       controller: 'api'
     }).
       when('/bangladesh', {
+          templateUrl: 'partials/bangladesh.html',
+          controller: 'bangladeshCtrl'
+      }).
+      when('/dashboard', {
           templateUrl: 'partials/bangladesh.html',
           controller: 'bangladeshCtrl'
       }).
