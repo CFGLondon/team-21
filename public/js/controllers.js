@@ -74,10 +74,9 @@ controller('bangladeshCtrl', function ($scope, $http) {
                 });
             // Prepare random data
             var data = [];
-            console.log($scope.dataSet);
-            console.log(data);
+
         })
     }).
     controller('interactiveMapCtrl', function ($scope) {
-        // write Ctrl here
+
     });
