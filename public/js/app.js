@@ -12,6 +12,10 @@ angular.module('myApp', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
+    when('/', {
+      templateUrl: 'partials/landing.html',
+      controller: 'landing'
+    }).
     when('/submit', {
       templateUrl: 'partials/submit.html',
       controller: 'submit'
