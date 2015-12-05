@@ -481,6 +481,14 @@
 		line-height: 1.5em;
 	}
 
+		header h1 {
+position: fixed;
+    height: 200px;
+    top: 0;
+    width: 100%;
+    z-index: 100
+	}
+
 	header h3 + p {
 		font-size: 1.1em;
 		margin-top: -0.8em;
