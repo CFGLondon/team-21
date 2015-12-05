@@ -27,7 +27,7 @@ angular.module('btford.socket-io', []).
 
       return function socketFactory (options) {
         options = options || {};
-        var socket = options.ioSocket || io.connect('http://myapp.herokuapp.com/');
+        var socket = options.ioSocket || io.connect();
         var prefix = options.prefix || defaultPrefix;
         var defaultScope = options.scope || $rootScope;
 

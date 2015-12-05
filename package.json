@@ -10,7 +10,7 @@
     "jade": "~0.31.2",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
-    "socket.io": "~0.9.16",
+    "socket.io": "latest",
     "twilio": "^2.6.0"
   },
   "scripts": {
