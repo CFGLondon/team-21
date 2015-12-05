@@ -27,34 +27,6 @@ var TWILIO_NUMBER = '441597800020',
 
 var client = new twilio.RestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-var translatorClient = new MsTranslator({
-  client_id: "Team21ADD"
-  , client_secret: "3Dopv4qM1C14WewQII8B6l/7NqeXr0gq8oMRyLSzVQE="
-}, true);
-
-var params = {
-  text: 'How\'s it going?'
-  , from: 'en'
-  , to: 'ro'
-};
-
-// Don't worry about access token, it will be auto-generated if needed.
-translatorClient.translate(params, function(err, data) {
-  console.log(data);
-});
-
-// client.calls.list(function(err, data) {
-//     data.calls.forEach(function(call) {
-//         console.log(call.Direction);
-//     });
-// });
-
-// client.messages.list(function(err, data) {
-//     data.messages.forEach(function(message) {
-//         console.log("Twillo message: " + util.inspect(message.body,false,null));
-//     });
-// });
-
 var resp = new twilio.TwimlResponse();
 resp.say({voice:'woman'}, 'Welcome to ADD!');
 
@@ -94,6 +66,12 @@ if (app.get('prod') === 'production') {
   // TODO
 };
 
+
+var translatorClient = new MsTranslator({
+  client_id: "Team21ADD"
+  , client_secret: "3Dopv4qM1C14WewQII8B6l/7NqeXr0gq8oMRyLSzVQE="
+}, true);
+
 /* Twillo thingy */
 
 var messages = [];
@@ -103,13 +81,35 @@ app.post('/message', function (request, response) {
 	var d = new Date();
 	var date = d.toLocaleString();
 
+	var smsBody = request.param('Body');
+
+	var translatedSmsBody = '';
+	var detectedLangauge = 'en';
+
+	// detect sms language
+	translatorClient.detect({ text: smsBody }, function(err, data) {
+	  detectedLangauge = data;
+
+		var params = {
+		  text: smsBody
+		  , from: detectedLangauge
+		  , to: 'en'
+		};
+
+		// translate from detected language to enslish
+		translatorClient.translate(params, function(err, data) {
+		  translatedSmsBody = data;
+		});
+
+	});
+
 	var messagesRef = {
 		sid: request.param('MessageSid'),
 		type:'text',
 		direction: "inbound",
 		tstamp: date,
 		fromNumber:request.param('From'),
-		textMessage:request.param('Body'),
+		textMessage:translatedSmsBody,
 		fromCity:request.param('FromCity'),
 		fromState:request.param('FromState'),
 		fromCountry:request.param('FromCountry')
@@ -119,11 +119,25 @@ app.post('/message', function (request, response) {
 
 	var outputFilename = 'messages.json';
 
+	var params = {
+	  text: 'Thanks for the message.'
+	  , from: 'en'
+	  , to: detectedLangauge
+	};
+
+	var translatedSmsReply = 'Thanks for the message.';
+
+	// translate from detected language to enslish
+	translatorClient.translate(params, function(err, data) {
+	  translatedSmsBody = data;
+	});
+
 	var resp = new twilio.TwimlResponse();
-	resp.message('Thanks for the message.');
+	resp.message(translatedSmsBody);
 	response.writeHead(200, {
 		'Content-Type':'text/xml'
 	});
+
 	response.end(resp.toString());
 });
 
@@ -136,31 +150,10 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 
-// Authentication
-
-app.get('/auth/facebook',
-  passport.authenticate('facebook'),
-  function(req, res){});
-
-app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
-
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
-
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
-}
-
 // JSON API
 app.get('/api/name', api.name);
 app.get('/api/bangladesh', api.bangladesh);
+app.get('/api/sudan', api.sudan);
 
 app.get('/api/messages', function (rew,res) {
 	res.json(messages);

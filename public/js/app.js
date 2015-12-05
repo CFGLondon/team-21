@@ -36,6 +36,10 @@ config(function ($routeProvider, $locationProvider) {
           templateUrl: 'partials/interactiveMap.html',
           controller: 'interactiveMapCtrl'
       }).
+      when('/sudan', {
+          templateUrl: 'partials/sudan.html',
+          controller: 'sudanCtrl'
+      }).
     otherwise({
       redirectTo: '/landing'
     });
