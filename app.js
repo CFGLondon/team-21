@@ -14,7 +14,8 @@ var util = require('util'),
   twilio = require('twilio'),
   session = require('express-session'),
   FacebookStrategy = require('passport-facebook').Strategy,
-  fs = require('fs');
+  fs = require('fs'),
+  MsTranslator = require('mstranslator');
 
 var app = module.exports = express();
 var server = require('http').createServer(app);
@@ -25,22 +26,25 @@ var TWILIO_NUMBER = '441597800020',
 	TWILIO_AUTH_TOKEN = '4c7ef46516983d77713fda5a66df1cd0';
 
 var client = new twilio.RestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
- 
 
-// client.sendSms({
-//     to: TEST_NUMBER,
-//     from: TWILIO_NUMBER,
-//     body:'Another.'
-// 	}, function(error, message) {
-//     if (!error) {
-//         console.log('Success! The SID for this SMS message is:');
-//         console.log(message.sid);
-//         console.log('Message sent on:');
-//         console.log(message.dateCreated);
-//     } else {
-//         console.log('Oops! There was an error.');
-//     }
-// });
+var MsTranslator = require('mstranslator');
+// Second parameter to constructor (true) indicates that
+// the token should be auto-generated.
+var translatorClient = new MsTranslator({
+  client_id: "Team21ADD"
+  , client_secret: "3Dopv4qM1C14WewQII8B6l/7NqeXr0gq8oMRyLSzVQE="
+}, true);
+
+var params = {
+  text: 'How\'s it going?'
+  , from: 'en'
+  , to: 'fr'
+};
+
+// Don't worry about access token, it will be auto-generated if needed.
+translatorClient.translate(params, function(err, data) {
+  console.log(data);
+});
 
 client.calls.list(function(err, data) {
     data.calls.forEach(function(call) {
