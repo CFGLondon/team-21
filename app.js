@@ -139,14 +139,6 @@ app.post('/message', function (request, response) {
 
 	var outputFilename = 'messages.json';
 
-	fs.writeFile(outputFilename, JSON.stringify(messagesRef, null, 4), function(err) {
-	    if(err) {
-	      console.log(err);
-	    } else {
-	      console.log("JSON saved to " + outputFilename);
-	    }
-	}); 
-
 	var resp = new twilio.TwimlResponse();
 	resp.message('Thanks for the message.');
 	response.writeHead(200, {
@@ -162,9 +154,6 @@ app.post('/message', function (request, response) {
 // serve index and view partials
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
-
-
-app.get('/messages', messages);
 
 
 // Authentication
@@ -192,6 +181,10 @@ function ensureAuthenticated(req, res, next) {
 // JSON API
 app.get('/api/name', api.name);
 app.get('/api/bangladesh', api.bangladesh);
+
+app.get('/api/messages', function (rew,res) {
+	res.json(messages);
+});
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
