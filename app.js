@@ -13,7 +13,8 @@ var util = require('util'),
   passport = require('passport'),
   twilio = require('twilio'),
   session = require('express-session'),
-  FacebookStrategy = require('passport-facebook').Strategy;
+  FacebookStrategy = require('passport-facebook').Strategy,
+  fs = require('fs');
 
 var app = module.exports = express();
 var server = require('http').createServer(app);
