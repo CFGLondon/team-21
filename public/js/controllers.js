@@ -37,7 +37,10 @@ controller('bangladeshCtrl', function ($scope, $http) {
                         $('#container').highcharts('Map', {
 
                             title : {
-                                text : 'People with  Impairments in Bangladesh '
+                                text : 'People with  Impairments in Bangladesh'
+                            },
+                            chart: {
+                               backgroundColor: 'rgba(255,255,255,0.0)',
                             },
 
                             mapNavigation: {
@@ -53,10 +56,10 @@ controller('bangladeshCtrl', function ($scope, $http) {
                             },
                             series : [
 
-
                                 {
                                 data :  $scope.dataSet,
                                 mapData: geojson,
+                                allowPointSelect:true,
                                 joinBy: 'name',
                                 name: 'No of impaired people',
                                 states: {
@@ -65,7 +68,7 @@ controller('bangladeshCtrl', function ($scope, $http) {
                                     }
                                 },
                                 dataLabels: {
-                                    enabled: true,
+                                    enabled: false,
                                     format: '{point.properties.name}'
                                 }
                             }]
@@ -82,7 +85,8 @@ controller('bangladeshCtrl', function ($scope, $http) {
                         plotBackgroundColor: null,
                         plotBorderWidth: null,
                         plotShadow: false,
-                        type: 'pie'
+                        type: 'pie',
+                         backgroundColor: 'rgba(255,255,255,0.0)',
                     },
                     title: {
                         text: 'Impairment Types'
