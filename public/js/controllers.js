@@ -15,55 +15,57 @@ angular.module('myApp.controllers', []).
     // write Ctrl here
   }).
 controller('bangladeshCtrl', function ($scope, $http) {
-        // $(function ($scope) {
+        $(function ($scope) {
 
-        //     //Load Data
-        //     $http.get('/api/bangladesh').
-        //         success(function(data, status, headers, config) {
-        //             $scope.bites = data.data;
-        //             console.log($scope.bites);
+            //Load Data
+            $http.get('/api/bangladesh').
+                success(function(data, status, headers, config) {
+                    $scope.dataSet = data.data;
+                    console.log($scope.dataSet);
 
-        //             $.getJSON('/assets/maps/bd-all.json', function (geojson) {
-        //                 $('#container').highcharts('Map', {
+                    $.getJSON('/assets/maps/bd-all.json', function (geojson) {
+                        $('#container').highcharts('Map', {
 
-        //                     title : {
-        //                         text : 'People with Visual Impairment in Bangladesh '
-        //                     },
+                            title : {
+                                text : 'People with Visual Impairment in Bangladesh '
+                            },
 
-        //                     mapNavigation: {
-        //                         enabled: true,
-        //                         buttonOptions: {
-        //                             verticalAlign: 'bottom'
-        //                         }
-        //                     },
+                            mapNavigation: {
+                                enabled: true,
+                                buttonOptions: {
+                                    verticalAlign: 'bottom'
+                                }
+                            },
 
-        //                     colorAxis: {
-        //                         minColor: '#FFFFFF',
-        //                         maxColor: '#FFA500'
-        //                     },
-        //                     series : [
+                            colorAxis: {
+                                minColor: '#FFFFFF',
+                                maxColor: '#FFA500'
+                            },
+                            series : [
 
-        //                         {
-        //                         data :  $scope.bites,
-        //                         mapData: geojson,
-        //                         joinBy: 'name',
-        //                         name: 'No of visualy impaired people',
-        //                         states: {
-        //                             hover: {
-        //                                 color: '#EEE8AA'
-        //                             }
-        //                         },
-        //                         dataLabels: {
-        //                             enabled: true,
-        //                             format: '{point.properties.name}'
-        //                         }
-        //                     }]
-        //                 });
-        //             });
-        //         });
-        //     // Prepare random data
-        //     var data = [];
-        //     console.log($scope.bites);
-        //     console.log(data);
-        // });
+
+                                {
+                                data :  $scope.dataSet,
+                                mapData: geojson,
+                                joinBy: 'name',
+                                name: 'No of visualy impaired people',
+                                states: {
+                                    hover: {
+                                        color: '#EEE8AA'
+                                    }
+                                },
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.properties.name}'
+                                }
+                            }]
+                        });
+                    });
+                });
+            // Prepare random data
+            var data = [];
+
+        })
+    }).
+    controller('interactiveMapCtrl', function ($scope) {
     });
