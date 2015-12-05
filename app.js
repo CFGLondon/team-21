@@ -18,7 +18,6 @@ var util = require('util'),
 
 var app = module.exports = express();
 var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
 
 var TWILIO_NUMBER = '441597800020',
 	TEST_NUMBER = '+4407459877051',
@@ -90,9 +89,6 @@ passport.use(new FacebookStrategy({
  * Configuration
  */
 
-// Socket.io Communication
-io.sockets.on('connection', require('./routes/socket'));
-
 // all environments
 app.set('port', process.env.PORT || 4000);
 app.set('views', __dirname + '/views');
@@ -120,6 +116,8 @@ if (app.get('prod') === 'production') {
 
 /* Twillo thingy */
 
+var messages = [];
+
 //	listen for incoming sms messages
 app.post('/message', function (request, response) {
 	var d = new Date();
@@ -137,7 +135,17 @@ app.post('/message', function (request, response) {
 		fromCountry:request.param('FromCountry')
 	}
 
-	io.sockets.emit('send:new_sms', messagesRef);
+	messages.push(messagesRef);
+
+	var outputFilename = 'messages.json';
+
+	fs.writeFile(outputFilename, JSON.stringify(messagesRef, null, 4), function(err) {
+	    if(err) {
+	      console.log(err);
+	    } else {
+	      console.log("JSON saved to " + outputFilename);
+	    }
+	}); 
 
 	var resp = new twilio.TwimlResponse();
 	resp.message('Thanks for the message.');
@@ -154,6 +162,9 @@ app.post('/message', function (request, response) {
 // serve index and view partials
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
+
+
+app.get('/messages', messages);
 
 
 // Authentication
