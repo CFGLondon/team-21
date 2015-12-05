@@ -13,23 +13,23 @@ angular.module('myApp', [
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {
-      templateUrl: 'partials/partial1.html',
-      controller: 'MyCtrl1'
+      templateUrl: 'partials/landing.html',
+      controller: 'landing'
     }).
     when('/submit', {
       templateUrl: 'partials/submit.html',
       controller: 'submit'
     }).
-    when('/version', {
-      templateUrl: 'partials/partial2.html',
-      controller: 'MyCtrl2'
+    when('/api', {
+      templateUrl: 'partials/api.html',
+      controller: 'api'
     }).
       when('/bangladesh', {
           templateUrl: 'partials/bangladesh.html',
           controller: 'bangladeshCtrl'
       }).
     otherwise({
-      redirectTo: '/bangladesh'
+      redirectTo: '/landing'
     });
 
   $locationProvider.html5Mode(true);

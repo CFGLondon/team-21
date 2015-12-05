@@ -1,12 +1,19 @@
-.fb-login{
-  color:white;
-  background: #213F92;
-  padding: 0.2em 1em;
-  border-radius: 7px;
-  cursor: pointer;
+img#addLogo {
+    opacity: 0.775;
+    height: 27px;
+    display: inline-block;
+    margin: 10px;
+    margin-bottom: -8px;
 }
-.fb-login > a{
-  color:white;
-  margin-right: 5px;
-  font-size: 19px;
+p{
+    display:inline-block;
+}
+div#subtitile {
+    display: inline-block;
+    float: right;
+}
+#header{
+    position:relative;
+    top:-250px;
+    max-width: 500px;
 }

@@ -5,15 +5,39 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html ng-app="myApp">
-
+	<head>
+		<title>Eventually by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="theme_assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="theme_assets/css/main.css" />
+		<link rel="stylesheet" href="css/app.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="theme_assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="theme_assets/css/ie9.css" /><![endif]-->
+	</head>
 	<body ng-controller="AppCtrl">
 
 	<!-- Header -->
-	<!-- Header -->
-
+		<header id="header">
+			<h1>The Disability Crisis </h1>
+			<div id="subtitile">
+				<p>an initiative by </p><img src="\images\logo.jpg" id="addLogo">
+			</div>
+		</header>
 
 		<div ng-view></div>
 
+	<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="http://twitter.com/adduk/" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="http://www.facebook.com/ADD.International" class="icon fa-facebook"><span class="label">Facenook</span></a></li>
+				<li><a href="mailto:supportercare@add.org.uk" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Action on Disability and Development. Charity registration no. 294860</li><li></li>
+			</ul>
+		</footer>
 
 
 	<!-- Scripts -->
@@ -27,10 +51,5 @@
 		<script type="text/javascript" src="js/controllers.js"></script>
 		<script type="text/javascript" src="js/filters.js"></script>
 		<script type="text/javascript" src="js/directives.js"></script>
-
-    <script type="text/javascript" src="assets/js/jquery-1.11.3.min.js"></script>
-    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-
 	</body>	
 </html>

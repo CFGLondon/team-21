@@ -27,9 +27,6 @@ var TWILIO_NUMBER = '441597800020',
 
 var client = new twilio.RestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-var MsTranslator = require('mstranslator');
-// Second parameter to constructor (true) indicates that
-// the token should be auto-generated.
 var translatorClient = new MsTranslator({
   client_id: "Team21ADD"
   , client_secret: "3Dopv4qM1C14WewQII8B6l/7NqeXr0gq8oMRyLSzVQE="
@@ -38,7 +35,7 @@ var translatorClient = new MsTranslator({
 var params = {
   text: 'How\'s it going?'
   , from: 'en'
-  , to: 'fr'
+  , to: 'ro'
 };
 
 // Don't worry about access token, it will be auto-generated if needed.
@@ -46,17 +43,17 @@ translatorClient.translate(params, function(err, data) {
   console.log(data);
 });
 
-client.calls.list(function(err, data) {
-    data.calls.forEach(function(call) {
-        console.log(call.Direction);
-    });
-});
+// client.calls.list(function(err, data) {
+//     data.calls.forEach(function(call) {
+//         console.log(call.Direction);
+//     });
+// });
 
-client.messages.list(function(err, data) {
-    data.messages.forEach(function(message) {
-        console.log("Twillo message: " + util.inspect(message.body,false,null));
-    });
-});
+// client.messages.list(function(err, data) {
+//     data.messages.forEach(function(message) {
+//         console.log("Twillo message: " + util.inspect(message.body,false,null));
+//     });
+// });
 
 var resp = new twilio.TwimlResponse();
 resp.say({voice:'woman'}, 'Welcome to ADD!');
@@ -67,27 +64,6 @@ resp.gather({ timeout:30 }, function() {
     // node. The parent node has functions on it for all allowed child
     // nodes. For <Gather>, these are <Say> and <Play>.
     this.say('For sales, press 1. For support, press 2.');});
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
-
-passport.use(new FacebookStrategy({
-    clientID: '607322559356477',
-    clientSecret: 'a2356bc540f1e1823a38cb59d835d4f2',
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification, for effect...
-    process.nextTick(function () {
-      return done(null, profile);
-    });
-  }
-));
 
 /**
  * Configuration

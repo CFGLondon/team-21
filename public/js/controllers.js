@@ -6,9 +6,9 @@ angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($http, $scope) {
 
   }).
-  controller('MyCtrl1', function ($scope) {
+  controller('landing', function ($scope) {
   }).
-  controller('MyCtrl2', function ($scope) {
+  controller('api', function ($scope) {
     // write Ctrl here
   }).
   controller('submit', function ($scope) {
