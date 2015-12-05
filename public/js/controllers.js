@@ -31,8 +31,8 @@ controller('bangladeshCtrl', function ($scope, $http) {
             //Load Data
             $http.get('/api/bangladesh').
                 success(function(data, status, headers, config) {
-                    $scope.bites = data.data;
-                    console.log($scope.bites);
+                    $scope.dataSet = data.data;
+                    console.log($scope.dataSet);
 
                     $.getJSON('/assets/maps/bd-all.json', function (geojson) {
                         $('#container').highcharts('Map', {
@@ -55,7 +55,7 @@ controller('bangladeshCtrl', function ($scope, $http) {
                             series : [
 
                                 {
-                                data :  $scope.bites,
+                                data :  $scope.dataSet,
                                 mapData: geojson,
                                 joinBy: 'name',
                                 name: 'No of visualy impaired people',
@@ -74,7 +74,10 @@ controller('bangladeshCtrl', function ($scope, $http) {
                 });
             // Prepare random data
             var data = [];
-            console.log($scope.bites);
+            console.log($scope.dataSet);
             console.log(data);
-        });
+        }).
+    controller('interactiveMapCtrl', function ($scope) {
+        // write Ctrl here
+    });
     });
