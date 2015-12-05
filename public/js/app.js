@@ -31,9 +31,9 @@ config(function ($routeProvider, $locationProvider) {
           templateUrl: 'partials/bangladesh.html',
           controller: 'bangladeshCtrl'
       }).
-      when('/interactiveMap', {
-          templateUrl: 'partials/interactiveMap.html',
-          controller: 'interactiveMapCtrl'
+      when('/sudan', {
+          templateUrl: 'partials/sudan.html',
+          controller: 'sudanCtrl'
       }).
     otherwise({
       redirectTo: '/bangladesh'

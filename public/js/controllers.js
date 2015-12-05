@@ -77,6 +77,51 @@ controller('bangladeshCtrl', function ($scope, $http) {
 
         })
     }).
-    controller('interactiveMapCtrl', function ($scope) {
+    controller('sudanCtrl', function ($scope, $http) {
+        //Load Data
+        $http.get('/api/sudan').
+            success(function(data, status, headers, config) {
+                $scope.dataSet = data.data;
+                console.log($scope.dataSet);
 
+                $.getJSON('/assets/maps/sd-all.json', function (geojson) {
+                    $('#container').highcharts('Map', {
+
+                        title : {
+                            text : 'People with Visual Impairment in Sudan '
+                        },
+
+                        mapNavigation: {
+                            enabled: true,
+                            buttonOptions: {
+                                verticalAlign: 'bottom'
+                            }
+                        },
+
+                        colorAxis: {
+                            minColor: '#FFFFFF',
+                            maxColor: '#FFA500'
+                        },
+                        series : [
+
+                            {
+                                data :  $scope.dataSet,
+                                mapData: geojson,
+                                joinBy: 'hc-key',
+                                name: 'No of visualy impaired people',
+                                states: {
+                                    hover: {
+                                        color: '#EEE8AA'
+                                    }
+                                },
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.properties.name}'
+                                }
+                            }]
+                    });
+                });
+            });
+        // Prepare random data
+        var data = [];
     });
