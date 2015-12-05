@@ -130,7 +130,7 @@ app.post('/message', function (request, response) {
 			translatorClient.translate(params, function(err, data) {
 			  	translatedSmsReply = data;
 				var resp = new twilio.TwimlResponse();
-				resp.message(translatedSmsBody);
+				resp.message(translatedSmsReply);
 				response.writeHead(200, {
 					'Content-Type':'text/xml'
 				});
